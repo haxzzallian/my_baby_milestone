@@ -1,54 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../screen/edit_milestone_screen.dart';
 
-import '../models/milestone.dart';
+import '../models/milestones.dart';
+import './milestone_item.dart';
 
 class MilestoneItem extends StatelessWidget {
-  // final String id;
-  // final String title;
-  // final String imageUrl;
+  final String id;
+  final String type;
+  final String remark;
+  final DateTime milestoneDate;
 
-  // ProductItem(this.id, this.title, this.imageUrl);
-
+  MilestoneItem(this.id, this.type, this.remark, this.milestoneDate);
   @override
   Widget build(BuildContext context) {
-    final milestone = Provider.of<Milestone>(context, listen: false);
-    return Card(
-      elevation: 5,
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-      child: ListTile(
-        onTap: () {
-          ///go to milestone details
-        },
-        leading: CircleAvatar(
-          //backgroundColor: _bgColor,
-          radius: 30,
-          child: Padding(
-            padding: const EdgeInsets.all(6),
-            child: FittedBox(
-              child: Text('\$milestone.milestoneDate'),
-            ),
-          ),
-        ),
-        title: Text(
-          milestone.type,
-        ),
-        //subtitle: Text(milestone.remark),
+    return ListTile(
+      title: Text(type),
+      leading: CircleAvatar(
+        child: Text(milestoneDate.toString()),
       ),
-      /*trailing: MediaQuery.of(context).size.width > 511
-          ? FlatButton.icon(
-              onPressed: () =>
-                  widget.delTransaction(widget.updateTransactions.id),
-              icon: const Icon(Icons.delete),
-              label: const Text('Delete'),
-              textColor: Theme.of(context).errorColor,
-            )
-          : IconButton(
-              icon: const Icon(Icons.delete),
-              onPressed: () =>
-                  widget.delTransaction(widget.updateTransactions.id),
+      trailing: Container(
+        width: 100,
+        child: Row(
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.edit),
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed(EditMilestoneScreen.routeName, arguments: id);
+              },
+              color: Theme.of(context).primaryColor,
+            ),
+            IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () {
+                Provider.of<Milestones>(context, listen: false)
+                    .deleteProduct(id);
+              },
               color: Theme.of(context).errorColor,
-            ),*/
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

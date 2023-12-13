@@ -11,6 +11,7 @@ import '../resources/colors_manager.dart';
 import '../resources/dimension_manager.dart';
 import '../resources/strings_manager.dart';
 import '../resources/routes_manager.dart';
+import '../screen/milestone_display_screen.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key key}) : super(key: key);
@@ -66,8 +67,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           ),
           lastPage
               ? GestureDetector(
-                  onTap: () =>
-                      Navigator.pushReplacementNamed(context, Routes.dashboard),
+                  onTap: () => Navigator.pushReplacementNamed(
+                      context, MilestoneDisplayScreen.routeName),
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: AppPadding.p16),
                     alignment: Alignment.center,
