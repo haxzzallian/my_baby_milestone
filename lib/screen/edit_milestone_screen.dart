@@ -1,6 +1,8 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/milestone.dart';
+import '../models/milestones.dart';
 
 class EditMilestoneScreen extends StatefulWidget {
   static const routeName = '/edit-milestone';
@@ -10,6 +12,9 @@ class EditMilestoneScreen extends StatefulWidget {
 }
 
 class _EditMilestoneScreenState extends State<EditMilestoneScreen> {
+  final _priceFocusNode = FocusNode();
+  final _descriptionFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
