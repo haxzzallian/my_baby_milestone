@@ -9,7 +9,7 @@ class MilestoneList extends StatelessWidget {
   Widget build(BuildContext context) {
     final milestoneData = Provider.of<Milestones>(context);
     final milestones = milestoneData.items;
-    return GridView.builder(
+    return ListView.builder(
       padding: const EdgeInsets.all(10.0),
       itemCount: milestones.length,
       itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
@@ -20,12 +20,6 @@ class MilestoneList extends StatelessWidget {
             // products[i].title,
             // products[i].imageUrl,
             ),
-      ),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 3 / 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
       ),
     );
   }

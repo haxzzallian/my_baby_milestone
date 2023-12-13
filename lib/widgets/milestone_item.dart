@@ -13,45 +13,42 @@ class MilestoneItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final milestone = Provider.of<Milestone>(context, listen: false);
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
+    return Card(
+      elevation: 5,
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
       child: ListTile(
-        leading: Text(
-          milestone.type,
-          textAlign: TextAlign.center,
+        onTap: () {
+          ///go to milestone details
+        },
+        leading: CircleAvatar(
+          //backgroundColor: _bgColor,
+          radius: 30,
+          child: Padding(
+            padding: const EdgeInsets.all(6),
+            child: FittedBox(
+              child: Text('\$milestone.milestoneDate'),
+            ),
+          ),
         ),
         title: Text(
           milestone.type,
-          textAlign: TextAlign.center,
         ),
-
-        /*GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(
-              MilestoneDetailScreen.routeName,
-              arguments: milestone.id,
-            );
-          },
-          child: Image.network(
-            product.imageUrl,
-            fit: BoxFit.cover,
-          ),
-        ),*/
-        /*footer: GridTileBar(
-          backgroundColor: Colors.black87,
-          leading: Consumer<Product>(
-            builder: (ctx, product, _) => IconButton(
-              icon: Icon(
-                product.isFavorite ? Icons.favorite : Icons.favorite_border,
-              ),
-              color: Theme.of(context).accentColor,
-              onPressed: () {
-                product.toggleFavoriteStatus();
-              },
-            ),
-          ),*/
-        //title:
+        //subtitle: Text(milestone.remark),
       ),
+      /*trailing: MediaQuery.of(context).size.width > 511
+          ? FlatButton.icon(
+              onPressed: () =>
+                  widget.delTransaction(widget.updateTransactions.id),
+              icon: const Icon(Icons.delete),
+              label: const Text('Delete'),
+              textColor: Theme.of(context).errorColor,
+            )
+          : IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () =>
+                  widget.delTransaction(widget.updateTransactions.id),
+              color: Theme.of(context).errorColor,
+            ),*/
     );
   }
 }
