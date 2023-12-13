@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/milestone_list.dart';
+import '../widgets/milestone_item.dart';
 //import '../widgets/app_drawer.dart';
 
 class Dashboard extends StatefulWidget {
@@ -18,22 +18,18 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         title: Text('My Milestone Dashboard'),
         actions: <Widget>[
-          PopupMenuButton(
-            onSelected: (_) {},
-            icon: Icon(
-              Icons.more_vert,
-            ),
-            itemBuilder: (_) => [
-              /*PopupMenuItem(
-                child: Text('Only Favorites'),
-                value: FilterOptions.Favorites,
-              ),*/
-            ],
-          ),
+          IconButton(
+              onPressed: () {
+                //add milestone page
+              },
+              icon: Icon(
+                Icons.add,
+              )),
         ],
       ),
+
       //drawer: AppDrawer(),
-      body: MilestoneList(),
+      //body: MilestoneItem(),
     );
   }
 }
